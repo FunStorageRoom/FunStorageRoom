@@ -1,0 +1,19 @@
+name: Delete branch after merge
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cleanup:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Delete branch
+      if: github.event.pull_request.merged == true
+      run: git push origin --delete ${GITHUB_REF#refs/heads/}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
