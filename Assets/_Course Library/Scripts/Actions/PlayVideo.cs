@@ -55,8 +55,15 @@ public class PlayVideo : MonoBehaviour
 
     public void NextClip()
     {
-        index = ++index % videoClips.Count;
-        Play();
+        bool isOn = videoPlayer.isPlaying;
+        if (isOn)
+        {
+            index = ++index % videoClips.Count;
+            videoPlayer.Stop();
+            videoPlayer.clip = videoClips[index];
+            videoPlayer.Prepare();
+            videoPlayer.Play();
+        }
     }
 
     public void PreviousClip()
