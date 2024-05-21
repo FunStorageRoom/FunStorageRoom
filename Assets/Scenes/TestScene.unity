@@ -2959,7 +2959,7 @@ MonoBehaviour:
   triggerAnimation:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Trigger Animation
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 43349621-3b02-4833-9298-8ca7c16dff38
