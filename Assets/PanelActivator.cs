@@ -19,7 +19,7 @@ public class PanelActivator : MonoBehaviour
 
     private void OnSelectEntered(SelectEnterEventArgs arg)
     {
-        panel.SetActive(true);
+        panel.SetActive(!panel.activeSelf);
     }
 
     void OnDestroy()
