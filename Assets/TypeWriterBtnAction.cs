@@ -4,7 +4,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class TypeWriterBtnAction : MonoBehaviour
 {
-    public AudioClip typingSound; // 타이핑 소리
     public string character; // 버튼에 해당하는 문자
     public Color pressedColor = Color.gray; // 눌렸을 때 색상
     private AudioSource audioSource;
@@ -20,8 +19,13 @@ public class TypeWriterBtnAction : MonoBehaviour
     {
         // AudioSource 컴포넌트를 추가하고 설정
         audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = typingSound;
         audioSource.playOnAwake = false;
+
+        // 정적 변수에 타이핑 소리가 설정된 경우 설정
+        if (AudioClipManager.Instance != null && AudioClipManager.Instance.typingSound != null)
+        {
+            audioSource.clip = AudioClipManager.Instance.typingSound;
+        }
 
         // 버튼의 원래 스케일과 위치 저장
         originalScale = transform.localScale;
@@ -48,7 +52,7 @@ public class TypeWriterBtnAction : MonoBehaviour
         Debug.Log("Button Pressed: " + character);
         
         // 타이핑 소리 재생
-        if (typingSound != null)
+        if (audioSource.clip != null    )
         {
             audioSource.Play();
         }
