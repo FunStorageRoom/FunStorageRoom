@@ -287,7 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 8
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &56886571
@@ -432,7 +431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: m
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &58224851
@@ -934,7 +932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 6
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &126212138
@@ -1079,7 +1076,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: d
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &131320816
@@ -2035,7 +2031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 3
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &233824916
@@ -2202,7 +2197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: w
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &260285506
@@ -2430,7 +2424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 0
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &304941508
@@ -2473,7 +2466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: .
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &307942713
@@ -2720,7 +2712,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: f
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &356384656
@@ -2967,7 +2958,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: b
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &377739393
@@ -3335,7 +3325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 4
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &519054419
@@ -3796,7 +3785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: g
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &653871936
@@ -3924,7 +3912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: l
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &660066146
@@ -4819,6 +4806,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: e
       objectReference: {fileID: 0}
+    - target: {fileID: 2137901271919328541, guid: e83c4008b37ea7a4da3f3ee40a04e194,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.231
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137901271919328541, guid: e83c4008b37ea7a4da3f3ee40a04e194,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.004
+      objectReference: {fileID: 0}
     - target: {fileID: 2368171547046144474, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
       propertyPath: m_Name
@@ -5066,7 +5063,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
+        type: 3}
+      insertIndex: 8
+      addedObject: {fileID: 1753586750}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1094198009860645451, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
@@ -5605,6 +5606,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2082689443}
   m_SourcePrefab: {fileID: 100100000, guid: e83c4008b37ea7a4da3f3ee40a04e194, type: 3}
+--- !u!4 &690677152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
+    type: 3}
+  m_PrefabInstance: {fileID: 690677151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &697449254 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2074087818763662127, guid: e83c4008b37ea7a4da3f3ee40a04e194,
@@ -5725,7 +5732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: s
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &697449258
@@ -5768,7 +5774,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: p
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &719285734
@@ -5919,7 +5924,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: '?'
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &816831487
@@ -6064,7 +6068,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: c
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &869188737
@@ -6209,7 +6212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: k
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &871385938
@@ -6693,7 +6695,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1033011137
@@ -6962,7 +6963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: a
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &1099669495 stripped
@@ -7107,7 +7107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &1135202811 stripped
@@ -7252,7 +7251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: x
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &1165827818 stripped
@@ -7273,7 +7271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 1
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &1165827824
@@ -7440,7 +7437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1169747742
@@ -7563,7 +7559,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1186399786
@@ -7810,7 +7805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: z
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1264695750
@@ -8091,7 +8085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: q
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &1374348405
@@ -8338,7 +8331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: n
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &1387545724
@@ -8381,7 +8373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 9
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1399165772
@@ -8604,7 +8595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 2
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &1486112301
@@ -8749,7 +8739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: i
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1504202867
@@ -8894,7 +8883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: +
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1562261291
@@ -9355,7 +9343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &1731587630 stripped
@@ -9376,7 +9363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: t
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1731587633
@@ -9521,7 +9507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: /
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1733745009
@@ -9648,6 +9633,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4269048711194870196, guid: 06831e6b220876b4e82ee5f008ab3455, type: 3}
+--- !u!1 &1753586749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1753586750}
+  m_Layer: 0
+  m_Name: BackPArt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1753586750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753586749}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 690677152}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1773348850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 210284892987175531, guid: e83c4008b37ea7a4da3f3ee40a04e194,
@@ -9790,7 +9806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: y
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &1837619413
@@ -10578,7 +10593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &1934246620
@@ -10817,7 +10831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: v
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1945162787
@@ -10962,7 +10975,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: ;
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1947345032
@@ -11522,7 +11534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &2018466878
@@ -11933,7 +11944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: '" " '
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &2079189980
@@ -12304,7 +12314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: ' '
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &2089097576 stripped
@@ -12449,7 +12458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: r
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &2107424093 stripped
@@ -12594,7 +12602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: 7
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &2118646237 stripped
@@ -12615,7 +12622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f212f6a25744478b8bc1b61e6345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSound: {fileID: 0}
   character: e
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!64 &2118646240
