@@ -11,7 +11,7 @@ public class RotateEarth : MonoBehaviour
     private float targetRotation = 0f; // 목표 회전 각도
     private bool isReversing = false; // 반대 방향으로 회전 중인지 확인하는 플래그
     private bool stop = false;
-    public bool enabled = false;
+    private bool rotating = false; // 회전 중인지 여부를 나타내는 플래그
 
     private AudioSource audioSource; // 오디오 소스 컴포넌트
 
@@ -27,7 +27,7 @@ public class RotateEarth : MonoBehaviour
 
     public void StartRotation()
     {
-        enabled = true; // 스크립트 활성화
+        rotating = true; // 회전 시작
         stop = false;
         targetRotation = stopAngle; // 목표 회전 각도 설정
 
@@ -38,14 +38,15 @@ public class RotateEarth : MonoBehaviour
 
     void StopRotation()
     {
-        enabled = false; // 스크립트 비활성화
+        rotating = false; // 회전 중지
+        stop = true;
         audioSource.Stop(); // 오디오 재생 중지
     }
 
     void Update()
     {
-        if (!enabled || targetObject == null)
-            return; // 스크립트가 비활성화되어 있거나 대상이 설정되지 않았으면 아무 작업도 하지 않음
+        if (!rotating || targetObject == null)
+            return; // 회전 중이 아니거나 대상이 설정되지 않았으면 아무 작업도 하지 않음
 
         // 현재 회전 속도 계산 (정방향 또는 역방향)
         float speed = isReversing ? -rotationSpeed : rotationSpeed;
@@ -63,21 +64,10 @@ public class RotateEarth : MonoBehaviour
         {
             isReversing = false; // 회전 중지
             currentRotation = 0f; // 정확하게 0도로 맞추기
-            stop = true;
+            StopRotation(); // 회전 중지
         }
 
         // 대상 오브젝트를 회전시킵니다.
-        if (!stop)
-        {
-            targetObject.Rotate(Vector3.up, rotationThisFrame);
-        }
-
-        if (stop)
-        {
-            isReversing = false;
-            currentRotation = 0f;
-            enabled = false;
-            audioSource.Stop(); // 오디오 재생 중지
-        }
+        targetObject.Rotate(Vector3.up, rotationThisFrame);
     }
 }
