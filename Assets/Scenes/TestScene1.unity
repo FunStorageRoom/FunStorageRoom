@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: 3
-  moveComponent: {fileID: 0}
+  moveComponent: {fileID: 106762647}
   isResetButton: 0
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   moveDistance: 0.1
@@ -3683,7 +3683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: 2
-  moveComponent: {fileID: 0}
+  moveComponent: {fileID: 106762647}
   isResetButton: 0
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   moveDistance: 0.1
@@ -4033,22 +4033,22 @@ PrefabInstance:
     - target: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.979
+      value: 0.139
       objectReference: {fileID: 0}
     - target: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0000012
+      value: 1.062
       objectReference: {fileID: 0}
     - target: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.011
+      value: 2.745
       objectReference: {fileID: 0}
     - target: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
@@ -4058,7 +4058,7 @@ PrefabInstance:
     - target: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
@@ -4073,7 +4073,7 @@ PrefabInstance:
     - target: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8964209292058844174, guid: e83c4008b37ea7a4da3f3ee40a04e194,
         type: 3}
