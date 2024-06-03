@@ -10,20 +10,26 @@ public class XRKnob : XRBaseInteractable
 {
     [Tooltip("The transform of the visual component of the knob")]
     public Transform knobTransform = null;
+
     [Tooltip("The minimum range the knob can rotate")]
     [Range(-180, 0)] public float minimum = -90.0f;
+
     [Tooltip("The maximum range the knob can rotate")]
-    [Range(0, 180)] public float maximum = 180.0f;
+    [Range(0, 180)] public float maximum = 90.0f;
+
     [Tooltip("The initial value of the knob")]
     [Range(0, 1)] public float defaultValue = 0.0f;
+
     [Serializable] public class ValueChangeEvent : UnityEvent<float> { }
-    // When the knob's value changes
+
+    // When the knobs's value changes
     public ValueChangeEvent OnValueChange = new ValueChangeEvent();
+
     public float Value { get; private set; } = 0.0f;
     public float Angle { get; private set; } = 0.0f;
+
     private IXRSelectInteractor selectInteractor = null;
     private Quaternion selectRotation = Quaternion.identity;
-    private Quaternion initialRotation = Quaternion.identity;
 
     private void Start()
     {
@@ -50,25 +56,25 @@ public class XRKnob : XRBaseInteractable
     {
         selectInteractor = eventArgs.interactorObject;
         selectRotation = selectInteractor.transform.rotation;
-        initialRotation = knobTransform.rotation; // 초기 회전값 저장
     }
 
     private void EndTurn(SelectExitEventArgs eventArgs)
     {
         selectInteractor = null;
         selectRotation = Quaternion.identity;
-        knobTransform.rotation = initialRotation; // 초기 회전값으로 되돌리기
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
     {
         base.ProcessInteractable(updatePhase);
+
         if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
         {
             if (isSelected)
             {
                 Angle = FindRotationValue();
                 float finalRotation = ApplyRotation(Angle);
+
                 SetValue(finalRotation);
                 selectRotation = selectInteractor.transform.rotation;
             }
@@ -86,17 +92,19 @@ public class XRKnob : XRBaseInteractable
     {
         Quaternion newRotation = Quaternion.AngleAxis(angle, Vector3.up);
         newRotation *= knobTransform.localRotation;
+
         Vector3 eulerRotation = newRotation.eulerAngles;
         eulerRotation.y = ClampAngle(eulerRotation.y);
-        knobTransform.localRotation = Quaternion.Euler(eulerRotation);
+
+        knobTransform.localEulerAngles = eulerRotation;
         return eulerRotation.y;
     }
 
     private float ClampAngle(float angle)
     {
-        angle = angle % 360; // 360도 이상의 회전값을 제한
         if (angle > 180)
             angle -= 360;
+
         return (Mathf.Clamp(angle, minimum, maximum));
     }
 
