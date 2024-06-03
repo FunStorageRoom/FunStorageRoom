@@ -2,11 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class TypeWriterBtnAction : MonoBehaviour
+public class TypeWriterBtnRstAction : MonoBehaviour
 {
     public string character; // 버튼에 해당하는 문자
     public GameObject moveComponent;
-    public bool isResetButton = false; 
     public Color pressedColor = Color.gray; // 눌렸을 때 색상
     private AudioSource audioSource;
     private Vector3 originalScale; // 버튼의 원래 스케일
@@ -14,8 +13,6 @@ public class TypeWriterBtnAction : MonoBehaviour
     private Vector3 originalPosition; // 버튼의 원래 위치
     private Vector3 pressedPositionOffset; // 버튼이 눌렸을 때의 위치 오프셋
     private Vector3 moveComponentOriginPosition; // 뒷 컴포넌트 오리진 위치
-    public float moveDistance = 0.01f; // 타이핑 시에 이동 거리
-    public float slideDuration = 0.05f; // 슬라이딩 이동 시간
     private Color originalColor; // 버튼의 원래 색상
     private Renderer buttonRenderer;
     private float pressDuration = 0.1f; // 버튼이 눌린 상태 유지 시간
@@ -49,6 +46,10 @@ public class TypeWriterBtnAction : MonoBehaviour
         interactable = GetComponent<XRSimpleInteractable>();
         interactable.selectEntered.AddListener(OnButtonPressed);
 
+        if(moveComponent != null){
+            moveComponentOriginPosition = moveComponent.transform.localPosition;
+        }
+        
         Debug.Log("TypeWriterBtnAction Start completed");
     }
 
@@ -72,16 +73,11 @@ public class TypeWriterBtnAction : MonoBehaviour
         // 타이핑한 문자 화면에 출력
         if (TypewriterDisplay.Instance != null)
         {
-            TypewriterDisplay.Instance.TypeCharacter(character);
+            TypewriterDisplay.Instance.TypeCharacter("\n");
         }
         else
         {
             Debug.LogWarning("TypewriterDisplay instance is not assigned.");
-        }
-        if(isResetButton){
-              StartCoroutine(SlideBackPartToOriginalPosition());
-        } else{
-            MovemoveComponent();
         }
     }
 
@@ -106,33 +102,17 @@ public class TypeWriterBtnAction : MonoBehaviour
         {
             buttonRenderer.material.color = originalColor;
         }
-        
+
         Debug.Log("Press Button Animation Ended");
     }
-    private IEnumerator SlideBackPartToOriginalPosition()
+    
+    private void ResetTypewriterBackPart()
     {
         if (moveComponent != null)
         {
-            Vector3 startPosition = moveComponent.transform.localPosition;
-            float elapsedTime = 0f;
-
-            while (elapsedTime < slideDuration)
-            {
-                moveComponent.transform.localPosition = Vector3.Lerp(startPosition, moveComponentOriginPosition, elapsedTime / slideDuration);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
             moveComponent.transform.localPosition = moveComponentOriginPosition;
             Debug.Log("Typewriter back part reset to original position.");
         }
     }
-    private void MovemoveComponent()
-    {
-        if (moveComponent != null)
-        {
-            moveComponent.transform.localPosition += new Vector3(-moveDistance, 0, 0);
-            Debug.Log("Typewriter back part moved left.");
-        }
-    }
+
 }
