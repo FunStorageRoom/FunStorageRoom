@@ -58,7 +58,7 @@ public class RotateEarth : MonoBehaviour
         if (!isReversing && currentRotation >= targetRotation)
         {
             isReversing = true; // 반대 방향으로 회전 시작
-            targetRotation = -2f; // 목표 회전 각도를 5도 더 회전한 상태로 설정
+            targetRotation = 0f; // 목표 회전 각도를 5도 더 회전한 상태로 설정
         }
         else if (isReversing && currentRotation <= targetRotation)
         {
