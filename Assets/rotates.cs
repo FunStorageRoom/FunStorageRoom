@@ -5,7 +5,8 @@ public class RotateEarth : MonoBehaviour
     public Transform targetObject; // 회전시킬 대상 오브젝트의 Transform
     public float rotationSpeed = 10f; // 오브젝트의 회전 속도 (degrees per second)
     public float stopAngle = 90f; // 회전을 멈출 각도
-    public AudioClip rotationAudio; // 회전 중 재생할 오디오 클립
+    public AudioClip clockwiseRotationAudio; // 시계방향 회전 중 재생할 오디오 클립
+    public AudioClip counterClockwiseRotationAudio; // 반시계방향 회전 중 재생할 오디오 클립
 
     private float currentRotation = 0f; // 현재 회전된 각도
     private float targetRotation = 0f; // 목표 회전 각도
@@ -31,8 +32,8 @@ public class RotateEarth : MonoBehaviour
         stop = false;
         targetRotation = stopAngle; // 목표 회전 각도 설정
 
-        // 회전 오디오 재생
-        audioSource.clip = rotationAudio;
+        // 시계방향 회전 오디오 재생
+        audioSource.clip = clockwiseRotationAudio;
         audioSource.Play();
     }
 
@@ -58,7 +59,11 @@ public class RotateEarth : MonoBehaviour
         if (!isReversing && currentRotation >= targetRotation)
         {
             isReversing = true; // 반대 방향으로 회전 시작
-            targetRotation = 0f; // 목표 회전 각도를 5도 더 회전한 상태로 설정
+            targetRotation = 0f; // 목표 회전 각도를 0도로 설정
+
+            // 반시계방향 회전 오디오 재생
+            audioSource.clip = counterClockwiseRotationAudio;
+            audioSource.Play();
         }
         else if (isReversing && currentRotation <= targetRotation)
         {
