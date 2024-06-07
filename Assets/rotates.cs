@@ -65,10 +65,10 @@ public class RotateEarth : MonoBehaviour
             audioSource.clip = counterClockwiseRotationAudio;
             audioSource.Play();
         }
-        else if (isReversing && currentRotation <= targetRotation)
+        else if (isReversing && currentRotation < targetRotation)
         {
             isReversing = false; // 회전 중지
-            currentRotation = 0f; // 정확하게 0도로 맞추기
+            currentRotation = -0.8f; // 정확하게 0도로 맞추기
             StopRotation(); // 회전 중지
         }
 
