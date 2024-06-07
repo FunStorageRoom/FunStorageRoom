@@ -8,8 +8,11 @@ public class HandsetGlowController : MonoBehaviour
     public Material glowingMaterial; // 발광 머티리얼
     public Material normalMaterial; // 일반 머티리얼
     public AudioClip audioClip; // 수화기를 들 때 재생할 오디오 클립
+    public AudioClip ring;
+    private bool haverang =false;
 
     private AudioSource audioSource;
+    private AudioSource audioSource2;
 
     private void OnEnable()
     {
@@ -27,6 +30,9 @@ public class HandsetGlowController : MonoBehaviour
     {
         // AudioSource 컴포넌트 추가
         audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource2 = gameObject.AddComponent<AudioSource>();
+        audioSource2.clip = ring;
+        audioSource2.playOnAwake = true;
         audioSource.clip = audioClip;
         audioSource.playOnAwake = false;
     }
@@ -35,12 +41,16 @@ public class HandsetGlowController : MonoBehaviour
     {
         SetHandsetGlow(false);
         StopAudio();
+        if(!haverang)
+        PlayAudio2();
     }
 
     private void OnHandsetRemoved(SelectExitEventArgs args)
     {
         SetHandsetGlow(true);
         PlayAudio();
+        StopAudio2();
+        haverang = true;
     }
 
     private void SetHandsetGlow(bool shouldGlow)
@@ -68,6 +78,21 @@ public class HandsetGlowController : MonoBehaviour
         if (audioSource.isPlaying)
         {
             audioSource.Stop();
+        }
+    }
+    private void PlayAudio2()
+    {
+        if (!audioSource2.isPlaying)
+        {
+            audioSource2.Play();
+        }
+    }
+
+    private void StopAudio2()
+    {
+        if (audioSource2.isPlaying)
+        {
+            audioSource2.Stop();
         }
     }
 }
