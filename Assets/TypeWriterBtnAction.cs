@@ -18,7 +18,7 @@ public class TypeWriterBtnAction : MonoBehaviour
     private Vector3 pressedPositionOffset; // 버튼이 눌렸을 때의 위치 오프셋
     private Vector3 moveComponentOriginPosition; // 뒷 컴포넌트 오리진 위치
     private float moveDistance = 0.01f; // 타이핑 시에 이동 거리
-    private float slideDuration = 0.1f; // 슬라이딩 이동 시간
+    private float slideDuration = 0.2f; // 슬라이딩 이동 시간
     private Color originalColor; // 버튼의 원래 색상
     private Renderer buttonRenderer;
     private float pressDuration = 0.1f; // 버튼이 눌린 상태 유지 시간
@@ -168,7 +168,7 @@ public class TypeWriterBtnAction : MonoBehaviour
             secondAudioSource.clip = secondSound;
             secondAudioSource.Play();
         }
-
+        yield return new WaitForSeconds(0.15f);
         // 슬라이딩 액션 실행
         if (moveComponent != null)
         {
