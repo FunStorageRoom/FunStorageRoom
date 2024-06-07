@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -9,6 +10,7 @@ public class TypeWriterBtnAction : MonoBehaviour
     public bool isResetButton = false; 
     public Color pressedColor = Color.gray; // 눌렸을 때 색상
     private AudioSource audioSource;
+    public AudioSource secondAudio;
     private Vector3 originalScale; // 버튼의 원래 스케일
     private Vector3 pressedScale; // 버튼이 눌렸을 때의 스케일
     private Vector3 originalPosition; // 버튼의 원래 위치
@@ -24,9 +26,11 @@ public class TypeWriterBtnAction : MonoBehaviour
     public float paperMoveDistance = 0.02f; // 엔터 칠 때마다 y축으로 이동할 거리
     private float angle = -7f; // x축 기준으로 기울어진 각도
     private float moveDistanceZ;
+    private TextMeshPro textComponent;
+
     void Start()
     {
-         // 각도를 라디안으로 변환
+        // 각도를 라디안으로 변환
         float angleRad = angle * Mathf.Deg2Rad;
         // z축 이동 거리를 계산
         moveDistanceZ = moveDistance * Mathf.Tan(angleRad);
@@ -65,8 +69,49 @@ public class TypeWriterBtnAction : MonoBehaviour
         {
             moveComponentOriginPosition = moveComponent.transform.localPosition;
         }
+
+        // TypewriterDisplay 인스턴스가 초기화될 때까지 기다림
+        StartCoroutine(InitializeTextComponent());
         
         Debug.Log("TypeWriterBtnAction Start completed");
+    }
+
+    private IEnumerator InitializeTextComponent()
+    {
+        // TypewriterDisplay 인스턴스가 null이 아닐 때까지 대기
+        while (TypewriterDisplay.Instance == null)
+        {
+            yield return null;
+        }
+
+        GameObject cube = GameObject.Find("TypeResult");
+        if (cube != null)
+        {
+            // Cube 하위의 Canvas 하위의 TextMeshProUGUI 컴포넌트를 찾기
+            Transform canvasTransform = cube.transform.Find("TypeCanvas");
+            if (canvasTransform != null)
+            {
+                textComponent = canvasTransform.GetComponentInChildren<TextMeshPro>();
+                if (textComponent != null)
+                {
+                    // TypewriterDisplay의 displayText를 이 textComponent로 설정
+                    TypewriterDisplay.Instance.displayText = textComponent;
+                    Debug.Log("TextMeshProUGUI 컴포넌트가 초기화되었습니다.");
+                }
+                else
+                {
+                    Debug.LogWarning("TextMeshProUGUI 컴포넌트를 Canvas에서 찾을 수 없습니다.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Canvas를 Cube에서 찾을 수 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Cube 오브젝트를 찾을 수 없습니다.");
+        }
     }
 
     private void OnButtonPressed(SelectEnterEventArgs args)
@@ -74,7 +119,7 @@ public class TypeWriterBtnAction : MonoBehaviour
         Debug.Log("Button Pressed: " + character);
         
         // 타이핑 소리 재생
-        if (audioSource.clip != null    )
+        if (audioSource.clip != null)
         {
             audioSource.Play();
         }
@@ -86,6 +131,16 @@ public class TypeWriterBtnAction : MonoBehaviour
         // 버튼이 눌리는 애니메이션 시작
         StartCoroutine(PressButton());
         
+        
+        if (isResetButton)
+        {
+            character = "\n";
+            StartCoroutine(SlideBackPartToOriginalPosition());
+        }
+        else
+        {
+            MoveMoveComponent();
+        }
         // 타이핑한 문자 화면에 출력
         if (TypewriterDisplay.Instance != null)
         {
@@ -94,11 +149,6 @@ public class TypeWriterBtnAction : MonoBehaviour
         else
         {
             Debug.LogWarning("TypewriterDisplay instance is not assigned.");
-        }
-        if(isResetButton){
-              StartCoroutine(SlideBackPartToOriginalPosition());
-        } else{
-            MovemoveComponent();
         }
     }
 
@@ -126,6 +176,7 @@ public class TypeWriterBtnAction : MonoBehaviour
         
         Debug.Log("Press Button Animation Ended");
     }
+
     private IEnumerator SlideBackPartToOriginalPosition()
     {
         if (moveComponent != null)
@@ -144,7 +195,8 @@ public class TypeWriterBtnAction : MonoBehaviour
             Debug.Log("Typewriter back part reset to original position.");
         }
     }
-    private void MovemoveComponent()
+
+    private void MoveMoveComponent()
     {
         if (moveComponent != null)
         {
