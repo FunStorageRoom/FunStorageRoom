@@ -7,10 +7,11 @@ public class TypeWriterBtnAction : MonoBehaviour
 {
     public string character; // 버튼에 해당하는 문자
     public GameObject moveComponent;
-    public bool isResetButton = false; 
+    public bool isResetButton = false;
     public Color pressedColor = Color.gray; // 눌렸을 때 색상
+    public AudioClip secondSound; // 두 번째 소리 파일
     private AudioSource audioSource;
-    public AudioSource secondAudio;
+    private AudioSource secondAudioSource; // 두 번째 소리를 위한 AudioSource
     private Vector3 originalScale; // 버튼의 원래 스케일
     private Vector3 pressedScale; // 버튼이 눌렸을 때의 스케일
     private Vector3 originalPosition; // 버튼의 원래 위치
@@ -28,6 +29,56 @@ public class TypeWriterBtnAction : MonoBehaviour
     private float moveDistanceZ;
     private TextMeshPro textComponent;
 
+    void Awake()
+    {
+        // XRSimpleInteractable 컴포넌트를 추가하고 설정
+        interactable = GetComponent<XRSimpleInteractable>();
+        if (interactable != null)
+        {
+            interactable.selectEntered.AddListener(OnButtonPressed);
+        }
+        else
+        {
+            Debug.LogWarning("XRSimpleInteractable 컴포넌트를 찾을 수 없습니다.");
+        }
+
+        // "BackPart"라는 이름의 GameObject를 찾아 moveComponent로 지정
+        moveComponent = GameObject.Find("BackPart");
+        if (moveComponent == null)
+        {
+            Debug.LogWarning("BackPart 오브젝트를 찾을 수 없습니다.");
+        }
+
+        // "TypeResult" 오브젝트를 찾기
+        GameObject typeResult = GameObject.Find("TypeResult");
+        if (typeResult != null)
+        {
+            // TypeResult 하위의 TextMeshPro 컴포넌트를 찾기
+            textComponent = typeResult.GetComponentInChildren<TextMeshPro>();
+            if (textComponent != null)
+            {
+                // TypewriterDisplay의 displayText를 이 textComponent로 설정
+                if (TypewriterDisplay.Instance != null)
+                {
+                    TypewriterDisplay.Instance.displayText = textComponent;
+                    Debug.Log("TextMeshPro 컴포넌트가 초기화되었습니다.");
+                }
+                else
+                {
+                    Debug.LogWarning("TypewriterDisplay 인스턴스가 초기화되지 않았습니다.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("TextMeshPro 컴포넌트를 TypeResult에서 찾을 수 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("TypeResult 오브젝트를 찾을 수 없습니다.");
+        }
+    }
+
     void Start()
     {
         // 각도를 라디안으로 변환
@@ -38,6 +89,10 @@ public class TypeWriterBtnAction : MonoBehaviour
         // AudioSource 컴포넌트를 추가하고 설정
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
+
+        // 두 번째 AudioSource 추가 및 설정
+        secondAudioSource = gameObject.AddComponent<AudioSource>();
+        secondAudioSource.playOnAwake = false;
 
         // 정적 변수에 타이핑 소리가 설정된 경우 설정
         if (AudioClipManager.Instance != null && AudioClipManager.Instance.typingSound != null)
@@ -58,67 +113,19 @@ public class TypeWriterBtnAction : MonoBehaviour
             originalColor = buttonRenderer.material.color;
         }
 
-        // XRSimpleInteractable 컴포넌트를 추가하고 설정
-        interactable = GetComponent<XRSimpleInteractable>();
-        interactable.selectEntered.AddListener(OnButtonPressed);
-
-        // "BackPart"라는 이름의 GameObject를 찾아 moveComponent로 지정
-        moveComponent = GameObject.Find("BackPart");
-        
         if (moveComponent != null)
         {
             moveComponentOriginPosition = moveComponent.transform.localPosition;
         }
 
-        // TypewriterDisplay 인스턴스가 초기화될 때까지 기다림
-        StartCoroutine(InitializeTextComponent());
-        
         Debug.Log("TypeWriterBtnAction Start completed");
-    }
-
-    private IEnumerator InitializeTextComponent()
-    {
-        // TypewriterDisplay 인스턴스가 null이 아닐 때까지 대기
-        while (TypewriterDisplay.Instance == null)
-        {
-            yield return null;
-        }
-
-        GameObject cube = GameObject.Find("TypeResult");
-        if (cube != null)
-        {
-            // Cube 하위의 Canvas 하위의 TextMeshProUGUI 컴포넌트를 찾기
-            Transform canvasTransform = cube.transform.Find("TypeCanvas");
-            if (canvasTransform != null)
-            {
-                textComponent = canvasTransform.GetComponentInChildren<TextMeshPro>();
-                if (textComponent != null)
-                {
-                    // TypewriterDisplay의 displayText를 이 textComponent로 설정
-                    TypewriterDisplay.Instance.displayText = textComponent;
-                    Debug.Log("TextMeshProUGUI 컴포넌트가 초기화되었습니다.");
-                }
-                else
-                {
-                    Debug.LogWarning("TextMeshProUGUI 컴포넌트를 Canvas에서 찾을 수 없습니다.");
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Canvas를 Cube에서 찾을 수 없습니다.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Cube 오브젝트를 찾을 수 없습니다.");
-        }
     }
 
     private void OnButtonPressed(SelectEnterEventArgs args)
     {
         Debug.Log("Button Pressed: " + character);
-        
-        // 타이핑 소리 재생
+
+        // 첫 번째 소리 재생
         if (audioSource.clip != null)
         {
             audioSource.Play();
@@ -130,17 +137,18 @@ public class TypeWriterBtnAction : MonoBehaviour
 
         // 버튼이 눌리는 애니메이션 시작
         StartCoroutine(PressButton());
-        
-        
+
+        // 리셋 버튼이 클릭된 경우
         if (isResetButton)
         {
             character = "\n";
-            StartCoroutine(SlideBackPartToOriginalPosition());
+            StartCoroutine(SlideBackPartAndPlaySecondSound());
         }
         else
         {
             MoveMoveComponent();
         }
+
         // 타이핑한 문자 화면에 출력
         if (TypewriterDisplay.Instance != null)
         {
@@ -149,6 +157,33 @@ public class TypeWriterBtnAction : MonoBehaviour
         else
         {
             Debug.LogWarning("TypewriterDisplay instance is not assigned.");
+        }
+    }
+
+    private IEnumerator SlideBackPartAndPlaySecondSound()
+    {
+        // 두 번째 소리 재생
+        if (secondSound != null)
+        {
+            secondAudioSource.clip = secondSound;
+            secondAudioSource.Play();
+        }
+
+        // 슬라이딩 액션 실행
+        if (moveComponent != null)
+        {
+            Vector3 startPosition = moveComponent.transform.localPosition;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < slideDuration)
+            {
+                moveComponent.transform.localPosition = Vector3.Lerp(startPosition, moveComponentOriginPosition, elapsedTime / slideDuration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            moveComponent.transform.localPosition = moveComponentOriginPosition;
+            Debug.Log("Typewriter back part reset to original position.");
         }
     }
 
@@ -173,27 +208,8 @@ public class TypeWriterBtnAction : MonoBehaviour
         {
             buttonRenderer.material.color = originalColor;
         }
-        
+
         Debug.Log("Press Button Animation Ended");
-    }
-
-    private IEnumerator SlideBackPartToOriginalPosition()
-    {
-        if (moveComponent != null)
-        {
-            Vector3 startPosition = moveComponent.transform.localPosition;
-            float elapsedTime = 0f;
-
-            while (elapsedTime < slideDuration)
-            {
-                moveComponent.transform.localPosition = Vector3.Lerp(startPosition, moveComponentOriginPosition, elapsedTime / slideDuration);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            moveComponent.transform.localPosition = moveComponentOriginPosition;
-            Debug.Log("Typewriter back part reset to original position.");
-        }
     }
 
     private void MoveMoveComponent()
