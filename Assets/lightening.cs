@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -11,9 +12,11 @@ public class HandsetGlowController : MonoBehaviour
     public AudioClip ring;
     public AudioClip ending;
     public AudioClip middle;
+
     private bool haverang =false;
     private bool havetold = false;
     private bool finish = false;
+    private bool isFinal = false;
 
     private AudioSource audioSource;
     private AudioSource audioSource2;
@@ -113,12 +116,21 @@ public class HandsetGlowController : MonoBehaviour
         }
     }
 
+    IEnumerator PlayEndingAndTransition()
+    {
+        isFinal = true;
+        audioSource.clip = ending;
+        PlayAudio();
+
+        yield return new WaitForSeconds(21f);
+        SceneTransitionManager.singleton.GoToScene(0);
+    }
+
     void Update()
     {
-        if (GlobalVariables.Instance.telephone && GlobalVariables.Instance.typewriter && GlobalVariables.Instance.tv1 && !finish)
+        if (GlobalVariables.Instance.telephone && GlobalVariables.Instance.typewriter && GlobalVariables.Instance.tv1 && !finish && !isFinal)
         {
-            audioSource.clip = ending;
-            PlayAudio();
+            StartCoroutine(PlayEndingAndTransition());
         }
     }
 }
