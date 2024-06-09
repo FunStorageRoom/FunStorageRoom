@@ -9,7 +9,11 @@ public class HandsetGlowController : MonoBehaviour
     public Material normalMaterial; // 일반 머티리얼
     public AudioClip audioClip; // 수화기를 들 때 재생할 오디오 클립
     public AudioClip ring;
+    public AudioClip ending;
+    public AudioClip middle;
     private bool haverang =false;
+    private bool havetold = false;
+    private bool finish = false;
 
     private AudioSource audioSource;
     private AudioSource audioSource2;
@@ -43,14 +47,26 @@ public class HandsetGlowController : MonoBehaviour
         StopAudio();
         if(!haverang)
         PlayAudio2();
+        if (GlobalVariables.Instance.telephone && GlobalVariables.Instance.typewriter && GlobalVariables.Instance.tv1)
+        {
+            finish = true;
+            StopAudio();
+        }
     }
 
     private void OnHandsetRemoved(SelectExitEventArgs args)
     {
         SetHandsetGlow(true);
+        if(!havetold)
         PlayAudio();
         StopAudio2();
         haverang = true;
+        if(havetold&&(!GlobalVariables.Instance.typewriter || !GlobalVariables.Instance.tv1))
+        {
+            audioSource.clip = middle;
+            PlayAudio();
+        }
+      
     }
 
     private void SetHandsetGlow(bool shouldGlow)
@@ -71,6 +87,7 @@ public class HandsetGlowController : MonoBehaviour
         {
             audioSource.Play();
         }
+        havetold = true;
     }
 
     private void StopAudio()
@@ -93,6 +110,15 @@ public class HandsetGlowController : MonoBehaviour
         if (audioSource2.isPlaying)
         {
             audioSource2.Stop();
+        }
+    }
+
+    void Update()
+    {
+        if (GlobalVariables.Instance.telephone && GlobalVariables.Instance.typewriter && GlobalVariables.Instance.tv1 && !finish)
+        {
+            audioSource.clip = ending;
+            PlayAudio();
         }
     }
 }
