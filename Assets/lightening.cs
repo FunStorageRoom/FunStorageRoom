@@ -60,16 +60,19 @@ public class HandsetGlowController : MonoBehaviour
     private void OnHandsetRemoved(SelectExitEventArgs args)
     {
         SetHandsetGlow(true);
-        if(!havetold)
-        PlayAudio();
-        StopAudio2();
-        haverang = true;
-        if(havetold&&(!GlobalVariables.Instance.typewriter || !GlobalVariables.Instance.tv1))
+        if (!havetold) 
+        { 
+            PlayAudio();
+            StopAudio2();
+            havetold = true;
+        }
+        else if(!GlobalVariables.Instance.typewriter || !GlobalVariables.Instance.tv1)
         {
             audioSource.clip = middle;
             PlayAudio();
         }
-      
+        haverang = true;
+
     }
 
     private void SetHandsetGlow(bool shouldGlow)
@@ -90,7 +93,6 @@ public class HandsetGlowController : MonoBehaviour
         {
             audioSource.Play();
         }
-        havetold = true;
     }
 
     private void StopAudio()
