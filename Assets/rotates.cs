@@ -24,6 +24,7 @@ public class RotateEarth : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+
     }
 
     public void StartRotation()
@@ -42,6 +43,7 @@ public class RotateEarth : MonoBehaviour
         rotating = false; // 회전 중지
         stop = true;
         audioSource.Stop(); // 오디오 재생 중지
+        GlobalVariables.Instance.telephone = true;
     }
 
     void Update()
