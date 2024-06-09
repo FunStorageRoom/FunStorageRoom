@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RotateEarth : MonoBehaviour
+public class Rotateone : MonoBehaviour
 {
     public Transform targetObject; // 회전시킬 대상 오브젝트의 Transform
     public float rotationSpeed = 10f; // 오브젝트의 회전 속도 (degrees per second)
@@ -24,7 +24,6 @@ public class RotateEarth : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
-
     }
 
     public void StartRotation()
@@ -43,8 +42,7 @@ public class RotateEarth : MonoBehaviour
         rotating = false; // 회전 중지
         stop = true;
         audioSource.Stop(); // 오디오 재생 중지
-       if (GlobalVariables.Instance.dial_nine)
-        GlobalVariables.Instance.telephone = true;
+        GlobalVariables.Instance.dial_nine = true;
     }
 
     void Update()
@@ -79,4 +77,5 @@ public class RotateEarth : MonoBehaviour
         targetObject.Rotate(Vector3.up, rotationThisFrame);
 
     }
+
 }

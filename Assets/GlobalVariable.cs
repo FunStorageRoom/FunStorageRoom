@@ -8,6 +8,7 @@ public class GlobalVariables : MonoBehaviour
     public bool typewriter;
     public bool tv1;
     public bool tv2;
+    public bool dial_nine;
 
     private void Awake()
     {
