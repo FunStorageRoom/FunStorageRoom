@@ -142,6 +142,7 @@ public class TypeWriterBtnAction : MonoBehaviour
         if (isResetButton)
         {
             character = "\n";
+            setTypewritterDone();
             StartCoroutine(SlideBackPartAndPlaySecondSound());
         }
         else
@@ -219,5 +220,10 @@ public class TypeWriterBtnAction : MonoBehaviour
             moveComponent.transform.localPosition += new Vector3(-moveDistance, 0, 0);
             Debug.Log("Typewriter back part moved left.");
         }
+    }
+
+    private void setTypewritterDone()
+    {
+        GlobalVariables.Instance.typewriter = true;
     }
 }

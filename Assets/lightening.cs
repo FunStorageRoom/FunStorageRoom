@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -11,9 +12,11 @@ public class HandsetGlowController : MonoBehaviour
     public AudioClip ring;
     public AudioClip ending;
     public AudioClip middle;
+
     private bool haverang =false;
     private bool havetold = false;
     private bool finish = false;
+    private bool isFinal = false;
 
     private AudioSource audioSource;
     private AudioSource audioSource2;
@@ -57,16 +60,19 @@ public class HandsetGlowController : MonoBehaviour
     private void OnHandsetRemoved(SelectExitEventArgs args)
     {
         SetHandsetGlow(true);
-        if(!havetold)
-        PlayAudio();
-        StopAudio2();
-        haverang = true;
-        if(havetold&&(!GlobalVariables.Instance.typewriter || !GlobalVariables.Instance.tv1))
+        if (!havetold) 
+        { 
+            PlayAudio();
+            StopAudio2();
+            havetold = true;
+        }
+        else if(!GlobalVariables.Instance.typewriter || !GlobalVariables.Instance.tv1)
         {
             audioSource.clip = middle;
             PlayAudio();
         }
-      
+        haverang = true;
+
     }
 
     private void SetHandsetGlow(bool shouldGlow)
@@ -87,7 +93,6 @@ public class HandsetGlowController : MonoBehaviour
         {
             audioSource.Play();
         }
-        havetold = true;
     }
 
     private void StopAudio()
@@ -113,12 +118,21 @@ public class HandsetGlowController : MonoBehaviour
         }
     }
 
+    IEnumerator PlayEndingAndTransition()
+    {
+        isFinal = true;
+        audioSource.clip = ending;
+        PlayAudio();
+
+        yield return new WaitForSeconds(21f);
+        SceneTransitionManager.singleton.GoToScene(0);
+    }
+
     void Update()
     {
-        if (GlobalVariables.Instance.telephone && GlobalVariables.Instance.typewriter && GlobalVariables.Instance.tv1 && !finish)
+        if (GlobalVariables.Instance.telephone && GlobalVariables.Instance.typewriter && GlobalVariables.Instance.tv1 && !finish && !isFinal)
         {
-            audioSource.clip = ending;
-            PlayAudio();
+            StartCoroutine(PlayEndingAndTransition());
         }
     }
 }

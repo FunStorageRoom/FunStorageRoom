@@ -138,4 +138,9 @@ public class PlayVideo : MonoBehaviour
         var mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
         videoMaterial = mat;
     }
+
+    public void setTVDone()
+    {
+        GlobalVariables.Instance.tv1 = true;
+    }
 }
