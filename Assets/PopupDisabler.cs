@@ -9,17 +9,17 @@ public class PopupDisabler : MonoBehaviour
     void Start()
     {
         interactable = GetComponent<XRSimpleInteractable>();
-        interactable.selectEntered.AddListener(OnSelectEntered);
+        interactable.activated.AddListener(OnActivated);
     }
 
-    private void OnSelectEntered(SelectEnterEventArgs arg)
+    private void OnActivated(ActivateEventArgs arg)
     {
         gameObject.SetActive(false);
     }
     
     void OnDestroy()
     {
-        interactable.selectEntered.RemoveListener(OnSelectEntered);
+        interactable.activated.RemoveListener(OnActivated);
     }
 
     // Update is called once per frame

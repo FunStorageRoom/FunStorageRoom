@@ -14,17 +14,17 @@ public class PanelActivator : MonoBehaviour
     void Start()
     {
         interactable = GetComponent<XRSimpleInteractable>();
-        interactable.selectEntered.AddListener(OnSelectEntered);
+        interactable.activated.AddListener(OnActivated);
     }
 
-    private void OnSelectEntered(SelectEnterEventArgs arg)
+    private void OnActivated(ActivateEventArgs arg)
     {
         panel.SetActive(!panel.activeSelf);
     }
 
     void OnDestroy()
     {
-        interactable.selectEntered.RemoveListener(OnSelectEntered);
+        interactable.activated.RemoveListener(OnActivated);
     }
 
     // Update is called once per frame

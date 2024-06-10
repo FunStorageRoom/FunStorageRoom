@@ -35,7 +35,7 @@ public class TypeWriterBtnAction : MonoBehaviour
         interactable = GetComponent<XRSimpleInteractable>();
         if (interactable != null)
         {
-            interactable.selectEntered.AddListener(OnButtonPressed);
+            interactable.activated.AddListener(OnButtonPressed);
         }
         else
         {
@@ -121,9 +121,10 @@ public class TypeWriterBtnAction : MonoBehaviour
         Debug.Log("TypeWriterBtnAction Start completed");
     }
 
-    private void OnButtonPressed(SelectEnterEventArgs args)
+    private void OnButtonPressed(ActivateEventArgs args)
     {
         Debug.Log("Button Pressed: " + character);
+        setTypewritterDone();
 
         // 첫 번째 소리 재생
         if (audioSource.clip != null)
@@ -142,7 +143,6 @@ public class TypeWriterBtnAction : MonoBehaviour
         if (isResetButton)
         {
             character = "\n";
-            setTypewritterDone();
             StartCoroutine(SlideBackPartAndPlaySecondSound());
         }
         else
