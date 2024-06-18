@@ -2,7 +2,19 @@
 작업 레포지토리
 
 **2024-06-17 update**
-  
+# Environment
+![GitHub](https://img.shields.io/badge/platform-GitHub-black.svg)
+![Git](https://img.shields.io/badge/version-control-Git-orange.svg)
+![Unity](https://img.shields.io/badge/engine-Unity-000000.svg)
+
+# Stack
+![C++](https://img.shields.io/badge/language-C++-blue.svg)
+
+# Communication
+![Notion](https://img.shields.io/badge/tool-Notion-blue.svg)
+![Discord](https://img.shields.io/badge/chat-Discord-7289da.svg)
+![KakaoTalk](https://img.shields.io/badge/messenger-KakaoTalk-yellow.svg)
+
 <p align="center">
   <strong>신나는 수장고에 오신 것을 환영합니다.</strong><br>
   <em>당신은 산업역사 박물관의 관리자입니다. 오늘도 여느 때와 같이 수장고의 유물들이 손상 없이 잘 있는지 확인하는 일정을 마무리하려고 합니다. 어라, 그런데 수화기가 울리네요? 수화기 속 귀여운 목소리는 수장고 속 유물들이 제대로 작동하는지 확인해 달라고 합니다. 아! 당신의 업무는 사실 유물들이 작동하는지 확인하는 거였군요? 당신은 수화기 속 목소리에 따라 업무를 진행해 나갑니다. 그런데.. 유물들이 ‘작동하는지’ 확인하는 것이 당신의 업무가 맞았을까요? 이상하지만 오늘도 업무를 잘 마무리해 봅시다!!</em>
