@@ -3,15 +3,18 @@
 
 **2024-06-17 update**
 # Environment
-![GitHub](https://img.shields.io/badge/platform-GitHub-black.svg)
-![Git](https://img.shields.io/badge/version-control-Git-orange.svg)
-![Unity](https://img.shields.io/badge/engine-Unity-000000.svg)
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
+<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
+<img src="https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=unity&logoColor=white"/>
 
 # Stack
-![C++](https://img.shields.io/badge/language-C++-blue.svg)
+<img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white"/>
 
 # Communication
-![Notion](https://img.shields.io/badge/tool-Notion-blue.svg)
+<img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white"/>
+<img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white"/>
+<img src="https://img.shields.io/badge/KakaoTalk-FFCD00?style=for-the-badge&logo=kakaotalk&logoColor=white"/>
+
 ![Discord](https://img.shields.io/badge/chat-Discord-7289da.svg)
 ![KakaoTalk](https://img.shields.io/badge/messenger-KakaoTalk-yellow.svg)
 
