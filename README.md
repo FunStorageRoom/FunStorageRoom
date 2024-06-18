@@ -46,5 +46,6 @@ First, fork the repository. Then, go into your favorite terminal.
 
 
 ## 사용자 시나리오
+![image](https://github.com/FunStorageRoom/FunStorageRoom/assets/55565839/d81e95d6-2804-4b28-9cba-fe008070583c)
 
 
