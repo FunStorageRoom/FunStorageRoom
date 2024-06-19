@@ -19,12 +19,11 @@
 </p>
 
 ## 사용자 매뉴얼
-[UserManual](./UserManual.md)
+
+    [UserManual](./UserManual.md)
 ## Getting Started
 
-First, fork the repository. Then, go into your favorite terminal.
-
-    수정 요망
+    [DeveloperMaunal](./DeveloperMaual.md)
 
 ## Systems and Engines
 
