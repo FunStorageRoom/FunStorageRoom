@@ -52,4 +52,7 @@
 ## 사용자 시나리오
 ![image](https://github.com/FunStorageRoom/FunStorageRoom/assets/55565839/d81e95d6-2804-4b28-9cba-fe008070583c)
 
-
+## Communication 링크
+<a href="https://complex-munchkin-773.notion.site/b888bf5355a7487f8648faa01a212bbc?pvs=4">
+    <img src="https://img.shields.io/badge/KakaoTalk-FFCD00?style=for-the-badge&logo=kakaotalk&logoColor=white" alt="KakaoTalk">
+</a>
