@@ -21,7 +21,7 @@
 ## 사용자 매뉴얼
 [UserManual](./UserManual.md)
 ## Getting Started
-[DeveloperMaunal](./DeveloperMaual.md)
+[DeveloperManual](./DeveloperManual.md)
 
 ## Systems and Engines
 
